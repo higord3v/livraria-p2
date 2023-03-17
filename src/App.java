@@ -111,13 +111,19 @@ public class App {
         // Impostos
         double bookISS = (newBook.price * taxes.getISS())/ 100;
         double bookXLP = (newBook.price * taxes.getXLP())/ 100;
-        double finalPrice = newBook.price + bookISS + bookXLP;
+        double bookSAH = 0;
+        if (newBook.price <= 150) {
+            bookSAH = (newBook.price * taxes.getSAH(newBook.price))/100;
+        }
+        double finalPrice = newBook.price + bookISS + bookXLP + bookSAH;
 
         System.out.println("Imposto por cada livro");
         System.out.println("Imposto ISS = "+ currencyFormatter.format(bookISS)
                 +" ("+taxes.getISS()+"% do valor de cada livro)");
         System.out.println("Imposto XLP = "+ currencyFormatter.format(bookXLP)
                 +" ("+taxes.getXLP()+"% do valor de cada livro)");
+        System.out.println("Imposto SAH = "+ currencyFormatter.format(bookSAH)
+                +" ("+taxes.getSAH(newBook.price)+"% do valor de cada livro)");
         System.out.println("Valor com impostos de cada livro é: "+ currencyFormatter.format(finalPrice));
 
         sc.next();

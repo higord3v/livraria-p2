@@ -9,6 +9,11 @@ public class Taxes {
         this.XLP = XLP;
     }
 
+    public Taxes() {
+        this.ISS = 30;
+        this.XLP = 5;
+    }
+
     public int getISS() {
         return ISS;
     }

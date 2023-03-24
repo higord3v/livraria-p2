@@ -13,6 +13,19 @@ public class BookRepositoryImpl implements BookRepository {
         return newBook;
     }
 
+    public Book find(String title) {
+        for (Book book : books) {
+            if (book.title.equals(title)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Book> findAll() {
+        return this.books;
+    }
+
     @Override
     public String toString() {
         return "BookRepository{" +
